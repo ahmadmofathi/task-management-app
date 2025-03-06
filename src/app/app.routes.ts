@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
 import { noAuthGuard } from './core/guards/no-auth.guard';
+import { HomeComponent } from './features/landing/home/home.component';
+import { EmploymentComponent } from './features/landing/employment/employment.component';
+import { RequestServiceComponent } from './features/landing/request-service/request-service.component';
 
 export const routes: Routes = [
   {
@@ -68,13 +71,17 @@ export const routes: Routes = [
   {
     path: 'employment',
     loadChildren: () =>
-      import('./features/employment/employment.routes').then((m) => m.EMPLOYMENT_ROUTES),
+      import('./features/employment/employment.routes').then(
+        (m) => m.EMPLOYMENT_ROUTES
+      ),
     canActivate: [authGuard],
   },
   {
     path: 'service-request',
     loadChildren: () =>
-      import('./features/service-request/service-request.routes').then((m) => m.SERVICE_REQUEST_ROUTES),
+      import('./features/service-request/service-request.routes').then(
+        (m) => m.SERVICE_REQUEST_ROUTES
+      ),
     canActivate: [authGuard],
   },
   {
@@ -87,8 +94,18 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
+    component: HomeComponent,
+    title: 'Danat',
+  },
+  {
+    path: 'employeer',
+    component: EmploymentComponent,
+    title: 'Employment',
+  },
+  {
+    path: 'services',
+    component: RequestServiceComponent,
+    title: 'Services',
   },
   {
     path: '**',
