@@ -4,7 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 
 import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatPaginatorIntl, MatPaginatorModule } from '@angular/material/paginator';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -23,9 +23,12 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { TenantsService } from '../../../../core/services/tenants';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatPaginatorIntlAr } from '../../../../core/mat-paginator-Ar';
 import html2pdf from 'html2pdf.js';
+import jsPDF from 'jspdf';
+import 'jspdf-autotable';
 
+// import arabicFont from '../../../../../assets/fonts/NotoSansArabic.ttf'
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -43,7 +46,9 @@ interface ColumnDef {
 @Component({
   selector: 'app-tenants-list',
   standalone: true,
-  providers: [provideNativeDateAdapter(), ConfirmationService, MessageService],
+  providers: [provideNativeDateAdapter(), ConfirmationService, MessageService,
+        { provide: MatPaginatorIntl, useClass: MatPaginatorIntlAr }
+  ],
   imports: [
     CommonModule,
     MatTableModule,
@@ -112,6 +117,34 @@ export class TenantsListComponent implements OnInit {
       label: 'تجديد الاشتراك',
       icon: 'pi pi-pencil',
       command: () => this.openDialog(),
+    },
+    {
+      label: 'حذف',
+      icon: 'pi pi-trash',
+      command: (event: any) => {
+        this.confirmationService.confirm({
+          target: event.target as EventTarget,
+          message: 'هل انت متاكد من حذف الشركة ؟',
+          header: '',
+          icon: 'pi pi-info-circle',
+          acceptButtonStyleClass: 'p-button-danger p-button-text',
+          rejectButtonStyleClass: 'p-button-text p-button-text',
+          acceptLabel: 'نعم انا متاكد',
+          rejectLabel: 'لا اريد ان احذف',
+          acceptIcon: 'none',
+          rejectIcon: 'none',
+          accept: () => {
+            this.tenantsService.delete(this.record.id).subscribe(() => {
+              this.messageService.add({
+                severity: 'success',
+                summary: 'تم الحذف',
+                detail: 'تم حذف الشركة بنجاح',
+              });
+              this.getList();
+            });
+          },
+        });
+      },
     },
   ];
 
@@ -186,9 +219,11 @@ export class TenantsListComponent implements OnInit {
     this.totalCount = results.totalCount;
     this.loading = false;
   }
-
+  dataForPDF: any[] = [];
   getList() {
     this.tenantsService.getList(this.filters).subscribe((res: any) => {
+      console.log(res);
+      this.dataForPDF = res.data;
       this.setDataSource(res);
     });
   }
@@ -224,38 +259,96 @@ export class TenantsListComponent implements OnInit {
   }
 
   exportPDF() {
-    const element = document.getElementById('pdfTable');
-    if (!element) return;
-  
-    const options = {
-      margin: 0.5,
-      filename: 'tenants-list.pdf',
-      image: { type: 'jpeg', quality: 0.98 },
-      html2canvas: { 
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        foreignObjectRendering: true,
-        // Handle text direction for Arabic
-        onclone: (doc: { getElementsByTagName: (arg0: string) => any; }) => {
-          const elements = doc.getElementsByTagName('td');
-          for (let i = 0; i < elements.length; i++) {
-            const el = elements[i] as HTMLElement;
-            el.style.fontFamily = 'sans-serif';
-            el.style.direction = 'rtl';
-            el.style.textAlign = 'right';
+      const element = document.getElementById('pdfTable');
+      if (!element) return;
+    
+      const options = {
+        margin: 0.5,
+        filename: 'employee-list.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          foreignObjectRendering: true,
+          // Handle text direction for Arabic
+          onclone: (doc: { getElementsByTagName: (arg0: string) => any; }) => {
+            const elements = doc.getElementsByTagName('td');
+            for (let i = 0; i < elements.length; i++) {
+              const el = elements[i] as HTMLElement;
+              el.style.fontFamily = 'sans-serif';
+              el.style.direction = 'rtl';
+              el.style.textAlign = 'right';
+            }
           }
+        },
+        jsPDF: {
+          unit: 'in',
+          format: 'a3',
+          orientation: 'landscape'
         }
-      },
-      jsPDF: {
-        unit: 'in',
-        format: 'a3',
-        orientation: 'landscape'
-      }
-    };
-  
-    html2pdf().from(element).set(options).save();
-  }
+      };
+    
+      html2pdf().from(element).set(options).save();
+    }
+    generatePDF() {
+      // Load Arabic font (you need to have the font file)
+      const doc = new jsPDF({
+        orientation: 'l', // landscape for better width
+        unit: 'mm',
+        format: 'a4'
+      });
+    
+      // Add Arabic font (make sure to load the font file)
+      // You can use Noto Sans Arabic from Google Fonts
+      // const fontPath = 'path/to/arabic-font.ttf'; // or use CDN
+      // doc.addFileToVFS('NotoSansArabic.ttf', arabicFont);
+      doc.addFont('NotoSansArabic.ttf', 'NotoSansArabic', 'normal');
+      doc.setFont('NotoSansArabic');
+      // Prepare headers and data
+      const headers = this.selectedColumns.map(col => col.label);
+      const rows = this.dataForPDF.map(item => 
+        this.selectedColumns.map(col => ({
+          content: item[col.key],
+          styles: { 
+            font: 'arabic',
+            halign: 'right',
+            fontStyle: 'normal'
+          }
+        }))
+      );
+    
+      // Configure AutoTable
+      (doc as any).autoTable({
+        head: [headers],
+        body: rows,
+        styles: {
+          font: 'arabic',
+          fontSize: 10,
+          cellPadding: 3,
+          halign: 'right'
+        },
+        theme: 'grid',
+        direction: 'rtl',
+        tableWidth: 'auto',
+        columnStyles: {
+          0: { cellWidth: 'auto' },
+          // Add specific column widths if needed
+        },
+        didParseCell: (data:any) => {
+          data.cell.styles.font = 'arabic';
+          data.cell.styles.halign = 'right';
+        },
+        margin: { right: 10, left: 10 },
+        pageBreak: 'auto',
+        showHead: 'everyPage',
+        tableLineWidth: 0.1,
+        overflow: 'linebreak'
+      });
+    
+      // Save the PDF
+      doc.save('tenant-data.pdf');
+    }
   ngOnInit(): void {
     // Reinitialize selectedColumns and displayedColumns based on allColumns.
     this.selectedColumns = this.allColumns.filter(col => col.selected);

@@ -250,7 +250,7 @@
         size="150"
         [disabled]="true"
         [(ngModel)]="completionPercent"
-        [valueTemplate]="completionPercent + '%'"
+        [valueTemplate]="(completionPercent| number : '1.2-2') + '%'"
       />
     </div>
     <div class="flex-grow">

@@ -72,10 +72,13 @@ export class AuthService {
   }
 
   logout(): void {
-    // this.http.post<any>(`${this.baseUrl}/auth/logout`, {});
     localStorage.removeItem('currentUser');
     localStorage.removeItem('role');
     this.currentUserSubject.next(null);
     this.router.navigate(['/auth/login']);
+  
+    // 🔹 Add a timestamp to force a storage event
+    localStorage.setItem('logout-event', Date.now().toString());
   }
+  
 }

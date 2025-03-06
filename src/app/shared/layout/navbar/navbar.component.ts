@@ -11,12 +11,13 @@ import { AuthService } from '../../../core/services/auth.service';
 import { HasRoleDirective } from '../../../core/directives/has-role.directive';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
   providers: [ConfirmationService, MessageService],
-  imports: [RouterModule, HasRoleDirective,ConfirmDialogModule],
+  imports: [RouterModule,DialogModule, HasRoleDirective,ConfirmDialogModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
 })
@@ -74,22 +75,15 @@ export class NavbarComponent {
 
   currentRole = localStorage.getItem('role');
 
-  logout(event:any) {
-      this.confirmationService.confirm({
-        target: event.target as EventTarget,
-        message: 'هل تريد تسجيل الخروج ؟',
-        header: '',
-        icon: 'pi pi-info-circle',
-        acceptButtonStyleClass: 'p-button-danger p-button-text',
-        rejectButtonStyleClass: 'p-button-text p-button-text',
-        acceptLabel: 'نعم',
-        rejectLabel: 'لا',
-        acceptIcon: 'none',
-        rejectIcon: 'none',
+  
+  showConfirmDialog = false; // Controls dialog visibility
 
-        accept: () => {
-          this.authService.logout();
-        },
-      });
+  logout() {
+    this.showConfirmDialog = true; // Open the confirmation dialog
+  }
+
+  confirmLogout() {
+    this.authService.logout(); // Perform logout
+    this.showConfirmDialog = false; // Close the dialog
   }
 }

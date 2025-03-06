@@ -8,18 +8,17 @@ import { catchError } from 'rxjs/operators';
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   const errorService = inject(ErrorService);
-
   const router = inject(Router);
 
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      let errorMessage = 'An unexpected error occurred';
+      let errorMessage = 'حدث خطأ غير متوقع';
 
       if (error.error instanceof ErrorEvent) {
-        // Client-side error
+        // خطأ من جهة العميل
         errorMessage = error.error.message;
       } else {
-        // Server-side error
+        // خطأ من جهة الخادم
         switch (error.status) {
           case 400:
             console.log(error.status);
@@ -31,19 +30,19 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
             errorMessage = handleValidationError(error.error);
             break;
           case 403:
-            errorMessage = "You don't have permission to perform this action";
+            errorMessage = 'ليس لديك إذن للقيام بهذا الإجراء';
             break;
           case 404:
-            errorMessage = 'Resource not found';
+            errorMessage = 'المورد غير موجود';
             break;
           case 422:
             errorMessage = handleValidationError(error.error);
             break;
           case 500:
-            errorMessage = 'Server error. Please try again later';
+            errorMessage = 'خطأ في الخادم. يرجى المحاولة لاحقًا';
             break;
           default:
-            errorMessage = `Error: ${error.message}`;
+            errorMessage = `خطأ: ${error.message}`;
         }
       }
 
@@ -64,7 +63,7 @@ function handleValidationError(error: any): string {
           }`
       )
       .join('\n');
-    return `Validation Error:\n${errors}`;
+    return `خطأ في التحقق:\n${errors}`;
   }
-  return error.message || 'Validation failed';
+  return error.message || 'فشل التحقق';
 }

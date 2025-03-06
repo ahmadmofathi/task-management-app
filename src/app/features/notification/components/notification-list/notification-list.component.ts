@@ -203,6 +203,8 @@ export class NotificationListComponent {
   getList() {
     this.loading = true;
     this.notificationService.getList(this.filters).subscribe((res: any) => {
+      console.log(res);
+      this.totalCount = res.length
       this.setDataSource(res);
       this.loading = false;
     });

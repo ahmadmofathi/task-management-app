@@ -16,6 +16,8 @@ import { StatTenantsComponent } from '../components/stat-tenants/stat-tenants.co
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { TenantsService } from '../../../core/services/tenants';
+import { ServiceRequestService } from '../../../core/services/service-request/service-request.service';
+import { JobApplicationService } from '../../../core/services/job-application/job-application.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -50,7 +52,9 @@ export class DashboardComponent {
   constructor(
     private confirmationService: ConfirmationService,
     private messageService: MessageService,
-    private tenantsService:TenantsService
+    private tenantsService:TenantsService,
+    private serviceRequestService: ServiceRequestService,
+    private jobApplicationService: JobApplicationService
   ){}
   react() {
     this.notiService.react(this.currentNoti.id).subscribe(() => {

@@ -66,6 +66,18 @@ export const routes: Routes = [
     canActivate: [authGuard],
   },
   {
+    path: 'employment',
+    loadChildren: () =>
+      import('./features/employment/employment.routes').then((m) => m.EMPLOYMENT_ROUTES),
+    canActivate: [authGuard],
+  },
+  {
+    path: 'service-request',
+    loadChildren: () =>
+      import('./features/service-request/service-request.routes').then((m) => m.SERVICE_REQUEST_ROUTES),
+    canActivate: [authGuard],
+  },
+  {
     path: 'new-password',
     loadChildren: () =>
       import('./features/new-password/newPassword.routes').then(

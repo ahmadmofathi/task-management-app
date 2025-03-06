@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { TenantsService } from '../../../../core/services/tenants';
 import { DropdownModule } from 'primeng/dropdown';
 import { EmployeeService } from '../../../../core/services/employee';
+import { Router } from '@angular/router';
+import { ServiceRequestService } from '../../../../core/services/service-request';
+import { JobApplicationService } from '../../../../core/services/job-application';
 
 @Component({
   selector: 'app-stat-tenants',
@@ -20,6 +23,9 @@ export class StatTenantsComponent {
   statisticsService = inject(StatisticsService);
   tenantsService = inject(TenantsService);
   employeesService = inject(EmployeeService);
+  serviceRequestService = inject(ServiceRequestService);
+  jobApplicationService = inject(JobApplicationService);
+  router =inject(Router);
   title = 'task over year';
   chart: any = [];
   tenants: any = [];
@@ -94,8 +100,21 @@ export class StatTenantsComponent {
 
   tenantId: any = null;
   employeeId: any = null;
-
-  ngOnInit() {
+  employments:any =[];
+  serviceReqs:any =[];
+  employmentNum = 0;
+  serviceRequestNum = 0;
+  ngOnInit(): void {
+    this.serviceRequestService.getList().subscribe((res) => {
+      console.log(res);
+      this.serviceReqs = res;
+      this.serviceRequestNum = this.serviceReqs.length;
+    });
+    this.jobApplicationService.getList().subscribe((res) => {
+      console.log(res);
+      this.employments = res;
+      this.employmentNum = this.employments.length;
+    })
     this.getLookup();
     // this.loadChartData();
     this.getExpiration();
@@ -220,5 +239,11 @@ export class StatTenantsComponent {
           },
         });
       });
+  }
+  employment(){
+    this.router.navigate(['/employment']);
+  }
+  serviceRequest(){
+    this.router.navigate(['/service-request']);
   }
 }

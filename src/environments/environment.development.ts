@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'https://managmentbackend-001-site1.mtempurl.com',
+  apiUrl: 'http://danathr-001-site2.ltempurl.com',
 };

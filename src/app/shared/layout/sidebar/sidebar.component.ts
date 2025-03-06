@@ -44,12 +44,12 @@ export class SidebarComponent {
       route: '/notification',
       visible: true,
     },
-    // {
-    //   label: 'الملفات',
-    //   icon: 'fas fa-file-invoice',
-    //   route: '/files',
-    //   visible: true,
-    // },
+    {
+      label: 'الملفات',
+      icon: 'fas fa-file-invoice',
+      route: '/files',
+      visible: ['Admin', 'Employee'].includes(this.currentRole),
+    },
     {
       label: 'التدريب',
       icon: 'fas fa-chart-bar',
@@ -66,6 +66,18 @@ export class SidebarComponent {
       label: 'إدارة الشركات',
       icon: 'fas fa-chart-line',
       route: '/tenants',
+      visible: ['SuperAdmin'].includes(this.currentRole),
+    },
+    {
+      label: 'طلب خدمة',
+      icon: 'fa-solid fa-briefcase',
+      route: '/service-request',
+      visible: ['SuperAdmin'].includes(this.currentRole),
+    },
+    {
+      label: 'التوظيف',
+      icon: 'fas fa-address-card',
+      route: '/employment',
       visible: ['SuperAdmin'].includes(this.currentRole),
     },
     // {
