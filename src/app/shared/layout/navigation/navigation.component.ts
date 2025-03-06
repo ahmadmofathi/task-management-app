@@ -114,8 +114,14 @@ import { RouterModule } from '@angular/router';
     </nav>
     <div class="bg-blue-950 pt-10 max-md:pt-0">
       <div
-        class="ms-10 flex justify-between items-center p-5 bg-white rounded-md w-[357px] max-md:m-0 max-md:w-full"
+        class="ms-10 flex relative justify-between items-center pt-7 p-5 bg-white rounded-md w-[357px] max-md:m-0 max-md:w-full"
       >
+        <div
+          class="absolute top-0 text-gray-500"
+          style="inset-inline-start: 5px;"
+        >
+          {{ 'provider' | translate }}
+        </div>
         <raw-img image="images/motsaql-work.jpg" class="h-[29px]" />
         <div class="w-0.5 bg-zinc-300 h-[30px]"></div>
         <raw-img image="images/work1.webp" class="h-[29px]" />
