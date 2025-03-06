@@ -38,20 +38,21 @@ export class LoginComponent {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
-      userType: ['employee'],
+      adminOrEmployee: [1, Validators.required],
     });
   }
   userTypes: any[] = [
-    { label: 'شركة', value: 'facility' },
-    { label: 'الموظف', value: 'employee' },
+    { label: 'منشأة', value: 1},
+    { label: 'الموظف', value: 2 },
   ];
   loginForm!: FormGroup;
   onLogin() {
+    console.log(this.loginForm.value);
     if (this.loginForm.valid) {
       this.isLoading = true;
 
-      const { email, password } = this.loginForm.value;
-      this.authService.login(email, password).subscribe({
+      const { email, password, adminOrEmployee } = this.loginForm.value;
+      this.authService.login(email, password,adminOrEmployee).subscribe({
         next: () => {
           this.tokenService.setRole();
           this.isLoading = false;

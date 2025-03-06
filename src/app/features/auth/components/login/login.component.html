@@ -26,23 +26,25 @@
                 <p-radioButton
                   [inputId]="type.value"
                   [value]="type.value"
-                  formControlName="userType"
+                  formControlName="adminOrEmployee"
                 ></p-radioButton>
               </div>
               <label
-                [for]="type.value"
-                class="block text-center py-2 px-4 cursor-pointer text-sm transition-all duration-200 rounded-full"
-                [class.employee-color]="loginForm.get('userType')?.value === type.value"
+              [for]="type.value"
+              class="block text-center py-2 px-4 cursor-pointer text-sm transition-all duration-200 rounded-full"
+              [class.employee-color]="
+                  loginForm.get('adminOrEmployee')?.value === type.value
+                "
               >
-                {{ type.label }}
-              </label>
+              {{ type.label }}
+            </label>
             </div>
           }
         </div>
 
         <div class="space-y-6">
           <div class="space-y-2">
-            <label class="block">البريد الالكتروني</label>
+            <label class="block" style="text-align: right;">البريد الالكتروني</label>
             <input
               pInputText
               formControlName="email"
@@ -53,7 +55,7 @@
           </div>
 
           <div class="space-y-2">
-            <label class="block">كلمة السر</label>
+            <label class="block" style="text-align: right;">كلمة السر</label>
             <p-password
               formControlName="password"
               [feedback]="false"
