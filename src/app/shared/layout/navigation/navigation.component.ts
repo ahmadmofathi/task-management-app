@@ -105,7 +105,7 @@ import { RouterModule } from '@angular/router';
         }
 
         <a
-          href="/dashboard"
+          routerLink="/dashboard"
           class="px-5 py-2 text-lg font-semibold hover:border-[#DF8317] transition-all transition-duration-1000 text-white rounded-xl border-2 border-solid border-white border-opacity-70 max-sm:w-full max-sm:text-center"
         >
           {{ 'danatPlatform' | translate }}
