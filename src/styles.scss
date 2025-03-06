@@ -4,27 +4,23 @@
 
 @layer components {
   .custom-button {
-    @apply bg-white text-primary py-2 px-6 rounded-full shadow hover:text-blue-950 cursor-pointer;
+    @apply bg-white text-primary py-2 px-6 rounded-full shadow hover:text-blue-950;
   }
   .btn-outline {
     @apply bg-transparent hover:bg-primary text-primary font-semibold hover:text-white py-2 px-4 border border-primary hover:border-transparent rounded-full px-6;
   }
   .custom-input {
-    @apply w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow disabled:bg-gray-100;
+    @apply w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-3 transition duration-300 focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow;
   }
 }
 
-@import url("https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&family=Noto+Kufi+Arabic:wght@100..900&display=swap");
-
-[dir="rtl"] {
-  text-align: right;
-}
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200..1000&display=swap");
 
 body,
 .mdc-dialog__title,
 .mat-mdc-button,
 .mdc-button__label {
-  font-family: "Almarai", serif !important;
+  font-family: "Cairo", serif;
 }
 
 .my-table {
@@ -37,20 +33,24 @@ body,
   }
 }
 
-.p-inputtextarea {
-  min-height: 95px;
-  max-height: 250px;
+html {
+  scroll-behavior: smooth;
 }
 
-.p-textarea {
-  display: block;
-  width: 100%;
-  min-height: 90px;
-}
+.scroll-custome {
+  &::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+  }
 
-.p-select-label {
-  padding: 0 !important;
-}
-.p-dropdown {
-  padding: 12px 15px;
+  &::-webkit-scrollbar-track {
+    -webkit-border-radius: 5px;
+    border-radius: 2px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    background: #aeaeae;
+  }
 }

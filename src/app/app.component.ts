@@ -1,32 +1,52 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NavbarComponent } from './shared/layout/navbar/navbar.component';
-import { SidebarComponent } from './shared/layout/sidebar/sidebar.component';
-import { AuthService } from './core/services/auth.service';
-import { TokenService } from './core/services/token.service';
+import { TopBar } from './shared/layout/top-bar/top-bar.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { NavBar } from './shared/layout/navigation/navigation.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
+import { ChatbotComponent } from './shared/layout/chatbot/chatbot.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, SidebarComponent],
+  imports: [
+    RouterOutlet,
+    TranslateModule,
+    TopBar,
+    NavBar,
+    FooterComponent,
+    ChatbotComponent,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent {
-  authService = inject(AuthService);
-  isAuth: boolean = false;
-  title = 'task-management-app';
-  ngOnInit(): void {
-    this.authService.isAuthenticated().subscribe((res) => {
-      this.isAuth = res;
-    });
+  isLoading: boolean = true;
+
+  ngOnInit() {
+    setTimeout(() => {
+      this.isLoading = false;
+    }, 30);
+    this.getLanguageBrowser();
   }
 
-  constructor() {}
+  getLanguageBrowser() {
+    const browserLang = this.translate.getBrowserLang();
+    const lang = localStorage.getItem('language') ?? browserLang;
+    if (lang) {
+      const matched = lang.match(/en|ar/) ? lang : 'en';
+      this.translate.use(matched);
+      document.documentElement.lang = matched;
+      document.documentElement.dir = matched === 'ar' ? 'rtl' : 'ltr';
+    }
+  }
 
+  switchLanguage(language: string) {
+    this.translate.use(language);
+  }
 
-  isRobot:boolean =true;
-  toggleRobot(){
-    this.isRobot = !this.isRobot;
+  constructor(private translate: TranslateService) {
+    translate.setDefaultLang('en');
+    translate.addLangs(['en', 'ar']);
   }
 }
