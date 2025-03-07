@@ -13,7 +13,7 @@ export class SponsorsComponent {
   sponsoreList: any[] = [
     {
       id: 1,
-      img: 'images/work1.webp',
+      img: 'images/work1.png',
       name: 'Sponsor 1',
     },
     {
@@ -28,7 +28,7 @@ export class SponsorsComponent {
     },
     {
       id: 3,
-      img: 'images/work1.webp',
+      img: 'images/work1.png',
       name: 'Sponsor 3',
     },
     {
@@ -38,12 +38,12 @@ export class SponsorsComponent {
     },
     {
       id: 4,
-      img: 'images/hr3.png',
+      img: 'images/hr.png',
       name: 'Sponsor 4',
     },
     {
       id: 5,
-      img: 'images/work1.webp',
+      img: 'images/work1.png',
       name: 'Sponsor 5',
     },
     {
@@ -53,12 +53,12 @@ export class SponsorsComponent {
     },
     {
       id: 6,
-      img: 'images/hr3.png',
+      img: 'images/hr.png',
       name: 'Sponsor 6',
     },
     {
       id: 1,
-      img: 'images/work1.webp',
+      img: 'images/work1.png',
       name: 'Sponsor 1',
     },
     {
@@ -68,12 +68,12 @@ export class SponsorsComponent {
     },
     {
       id: 2,
-      img: 'images/hr3.png',
+      img: 'images/hr.png',
       name: 'Sponsor 2',
     },
     {
       id: 3,
-      img: 'images/work1.webp',
+      img: 'images/work1.png',
       name: 'Sponsor 3',
     },
     {
@@ -83,12 +83,12 @@ export class SponsorsComponent {
     },
     {
       id: 4,
-      img: 'images/hr3.png',
+      img: 'images/hr.png',
       name: 'Sponsor 4',
     },
     {
       id: 5,
-      img: 'images/work1.webp',
+      img: 'images/work1.png',
       name: 'Sponsor 5',
     },
     {
@@ -98,7 +98,7 @@ export class SponsorsComponent {
     },
     {
       id: 6,
-      img: 'images/hr3.png',
+      img: 'images/hr.png',
       name: 'Sponsor 6',
     },
   ];

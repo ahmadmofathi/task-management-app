@@ -81,9 +81,9 @@ export class StatTenantsComponent {
       });
   }
   getExpiration(){
-    this.tenantsService.getTenantExpiration().subscribe((res: any) => {
-      console.log(res);
-    })
+    // this.tenantsService.getTenantExpiration().subscribe((res: any) => {
+    //   console.log(res);
+    // })
   }
   updateFilters(event: any,mode:any) {
     mode=='t'?this.tenantId = event.value:this.employeeId = event.value;

@@ -21,13 +21,13 @@ import { CommonModule } from '@angular/common';
           class="flex gap-2.5 items-center hover:text-gray-300 cursor-pointer"
         >
           <span class="pi pi-envelope"></span>
-          <p class="text-sm ">Info<span>&#64;</span>alwethq.com.sa</p>
+          <p class="text-sm ">Info<span>&#64;</span>danatsharqa.com.sa</p>
         </div>
         <div
           class="flex gap-2.5 items-center hover:text-gray-300 cursor-pointer"
         >
           <span class="pi pi-phone "></span>
-          <p class="text-sm ">+966500612332</p>
+          <p class="text-sm ">966534687859+</p>
         </div>
       </div>
     </header>
