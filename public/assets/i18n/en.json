@@ -2,48 +2,49 @@
   "contactUs": "Contact Us Now",
   "loadingSend": "Sending ...",
   "myHome": "Home",
+  "provider": "Certified Remote Work Provider",
   "about": "About Us",
   "whyUs": "Training",
-  "services": "Request Service",
-  "packages": "Packages",
-  "employment": "Employment",
+  "services": "Request",
+  "packages": "Subscriptions",
+  "employment": "Jobs",
   "requestService": "Request Service",
   "danatPlatform": "Danat Platform",
   "partners": "Danat Partners",
   "optional": "Optional",
   "home": {
-    "title": "Certified Service Provider for Remote Employment",
-    "heroSubTitle": "Development of recruitment and training of national cadres, connecting remote workers via a remote work platform",
+    "title": "Certified by Ministry of Humen resource ministry as Service Provider for Teleworks",
+    "heroSubTitle": "Development of recruitment and training your workforce, register them on teleworks platform",
     "startFreeTrial": "Start Your Free Trial",
     "subscribeNow": "Subscribe Now",
     "improve": {
       "preTitle": "Improve Performance Levels in Your Organization",
       "postTitle": "Immediately",
       "subTitle": "This text is an example of placeholder text that can be replaced within the same space. It has been generated initially.",
-      "1main": "Attract National Cadres",
-      "2main": "Connect Remote Workers",
-      "3main": "Training, Follow-Up, and Performance Measurement"
+      "1main": "Training, Follow-Up, and Performance Measurement",
+      "2main": "Register your employees on teleworks platform",
+      "3main": "Helping your organization to obtain the right people"
     },
     "choose": {
       "postTitle": "Training",
-      "subTitle": "Danat Sharjah is a leading Saudi company that offers a wide range of services to enhance quality and improve the efficiency of organizations in the Kingdom of Saudi Arabia through recruitment and training of national cadres.",
-      "1main": "Remote Training",
+      "subTitle": "Danat Is approved teleworks service provider that offers a wide range of services to enhance quality and improve the efficiency of organizations in the Kingdom of Saudi Arabia through help to recruit  and train your employees",
+      "1main": "Online Training",
       "2main": "In-Person Training",
       "3main": "Diplomas",
-      "1sub": "Through accredited institutes for remote training for 12 months",
-      "2sub": "Through specialized and accredited institutes by the Technical and Vocational Training Corporation",
-      "3sub": "Through a strategic partnership with the secondary industrial institute to provide workers with specialized and accredited courses and diplomas"
+      "1sub": "Through certified institutes by TVTC for remote training up to 12 months",
+      "2sub": "Through specialized and approved institutes by the Technical and Vocational Training Corporation",
+      "3sub": "Through a strategic partnership with academies and training centers. Danat Services"
     },
     "services": {
-      "title": "Danat Services",
+      "title": "Danat Offers to your organization",
       "list1": "E-learning and Training",
-      "list2": "Danat Platform to track attendance, departures, and performance for remote workers",
+      "list2": "Danat Platform to track attendance, and performance for your employees",
       "list3": "Consulting Services and Human Resources Solutions",
-      "list4": "Providing consultations regarding structuring and managing remote workers",
-      "list5": "Connecting remote workers on the platform of the Ministry of Human Resources and Social Development"
+      "list4": "Registering your employees on Teleworks platform",
+      "list5": "Making sure to make Nitaqat level stable"
     },
     "pricing": {
-      "title": "Danat Subscriptions for Remote Work",
+      "title": "Danat Subscriptions ",
       "subTitle": "Choose the subscription that suits you from Danat's remote work platform subscriptions. Whether your company is small, medium, or large, you will find the suitable subscription to meet your business needs and budget.",
       "PLANS": {
         "BASIC": {
