@@ -60,6 +60,27 @@
           <i class="pi pi-angle-left text-xl text-amber-600"></i>
           <a
             [routerLink]="['/']"
+            fragment="about"
+            class="hover:text-amber-600 transition-colors"
+          >
+            {{ "about" | translate }}</a
+          >
+        </li>
+
+        <li class="flex gap-2.5 items-center text-base text-white">
+          <i class="pi pi-angle-left text-xl text-amber-600"></i>
+          <a
+            [routerLink]="['/']"
+            fragment="whyUs"
+            class="hover:text-amber-600 transition-colors"
+          >
+            {{ "whyUs" | translate }}</a
+          >
+        </li>
+        <li class="flex gap-2.5 items-center text-base text-white">
+          <i class="pi pi-angle-left text-xl text-amber-600"></i>
+          <a
+            [routerLink]="['/']"
             fragment="packages"
             class="hover:text-amber-600 transition-colors"
           >
@@ -91,7 +112,7 @@
     <section class="max-md:w-full max-md:-order-1 max-sm:pt-10">
       <img class="h-[60px] w-[202px]" src="images/logo-white.png" alt="Logo" />
       <p
-        class="mb-5 text-base leading-8 text-start text-white max-w-[306px] max-sm:text-sm max-sm:leading-6"
+        class="mb-5 text-base leading-8 text-start text-white max-w-[320px] max-sm:text-sm max-sm:leading-6"
       >
         {{ "footer.aboutInfo" | translate }}
       </p>
@@ -127,6 +148,9 @@
   <div
     class="pt-10 w-full text-xl text-center text-white text-opacity-80 max-sm:text-base"
   >
-    {{ "footer.rightsReserved" | translate }}
+    <span> {{ "footer.rightsReserved" | translate }}</span>
+    <span class="text-[#DF8317]">
+      {{ "footer.rightsReservedPost" | translate }}</span
+    >
   </div>
 </footer>

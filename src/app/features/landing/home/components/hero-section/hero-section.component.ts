@@ -15,7 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
         </h1>
 
         <p
-          class=" text-xl font-semibold text-white opacity-70 md:leading-10 max-sm:text-base lg:max-w-[50%] "
+          class=" text-xl lg:max-w-[415px] font-semibold text-white opacity-70 md:leading-10 max-sm:text-base"
         >
           {{ 'home.heroSubTitle' | translate }}
         </p>
