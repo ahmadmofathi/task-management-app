@@ -12,6 +12,11 @@ import { SponsorCardComponent } from './sponsor-card/sponsor-card.component';
 export class SponsorsComponent {
   sponsoreList: any[] = [
     {
+      id: 3,
+      img: 'images/hr3.png',
+      name: 'Sponsor 2',
+    },
+    {
       id: 1,
       img: 'images/work1.png',
       name: 'Sponsor 1',
@@ -20,6 +25,36 @@ export class SponsorsComponent {
       id: 2,
       img: 'images/motsaql-work.jpg',
       name: 'Sponsor 2',
+    },
+    {
+      id: 4,
+      img: 'images/hr3.png',
+      name: 'Sponsor 4',
+    },
+    {
+      id: 3,
+      img: 'images/work1.png',
+      name: 'Sponsor 3',
+    },
+    {
+      id: 4,
+      img: 'images/motsaql-work.jpg',
+      name: 'Sponsor 4',
+    },
+    {
+      id: 6,
+      img: 'images/hr3.png',
+      name: 'Sponsor 6',
+    },
+    {
+      id: 5,
+      img: 'images/work1.png',
+      name: 'Sponsor 5',
+    },
+    {
+      id: 6,
+      img: 'images/motsaql-work.jpg',
+      name: 'Sponsor 6',
     },
     {
       id: 2,
@@ -27,36 +62,6 @@ export class SponsorsComponent {
       name: 'Sponsor 2',
     },
     {
-      id: 3,
-      img: 'images/work1.png',
-      name: 'Sponsor 3',
-    },
-    {
-      id: 4,
-      img: 'images/motsaql-work.jpg',
-      name: 'Sponsor 4',
-    },
-    {
-      id: 4,
-      img: 'images/hr.png',
-      name: 'Sponsor 4',
-    },
-    {
-      id: 5,
-      img: 'images/work1.png',
-      name: 'Sponsor 5',
-    },
-    {
-      id: 6,
-      img: 'images/motsaql-work.jpg',
-      name: 'Sponsor 6',
-    },
-    {
-      id: 6,
-      img: 'images/hr.png',
-      name: 'Sponsor 6',
-    },
-    {
       id: 1,
       img: 'images/work1.png',
       name: 'Sponsor 1',
@@ -67,9 +72,9 @@ export class SponsorsComponent {
       name: 'Sponsor 2',
     },
     {
-      id: 2,
-      img: 'images/hr.png',
-      name: 'Sponsor 2',
+      id: 4,
+      img: 'images/hr3.png',
+      name: 'Sponsor 4',
     },
     {
       id: 3,
@@ -82,9 +87,9 @@ export class SponsorsComponent {
       name: 'Sponsor 4',
     },
     {
-      id: 4,
-      img: 'images/hr.png',
-      name: 'Sponsor 4',
+      id: 6,
+      img: 'images/hr3.png',
+      name: 'Sponsor 6',
     },
     {
       id: 5,
@@ -94,11 +99,6 @@ export class SponsorsComponent {
     {
       id: 6,
       img: 'images/motsaql-work.jpg',
-      name: 'Sponsor 6',
-    },
-    {
-      id: 6,
-      img: 'images/hr.png',
       name: 'Sponsor 6',
     },
   ];

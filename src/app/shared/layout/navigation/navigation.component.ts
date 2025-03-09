@@ -122,11 +122,11 @@ import { RouterModule } from '@angular/router';
         >
           {{ 'provider' | translate }}
         </div>
-        <raw-img image="images/motsaql-work.jpg" class="h-[29px]" />
+        <raw-img image="images/hr.png" class="h-[30px]" />
         <div class="w-0.5 bg-zinc-300 h-[30px]"></div>
-        <raw-img image="images/work1.png" class="h-[29px]" />
+        <raw-img image="images/motsaql-work.jpg" class="h-[40px]" />
         <div class="w-0.5 bg-zinc-300 h-[30px]"></div>
-        <raw-img image="images/hr.png" class="h-[29px]" />
+        <raw-img image="images/work1.png" class="h-[40px]" />
       </div>
     </div>
   `,
