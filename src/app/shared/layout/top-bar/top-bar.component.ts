@@ -27,7 +27,7 @@ import { CommonModule } from '@angular/common';
           class="flex gap-2.5 items-center hover:text-gray-300 cursor-pointer"
         >
           <span class="pi pi-phone "></span>
-          <p class="text-sm ">966534687859+</p>
+          <p class="text-sm" style="direction: ltr">+966534687859</p>
         </div>
       </div>
     </header>
